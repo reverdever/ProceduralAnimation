@@ -43,10 +43,6 @@ function love.update(dt)
         rondje1.langerdan = false
     end
 
-    if love.mouse.isDown("1") then
-        rondje1.x = xM
-        rondje1.y = yM
-    end
 
     if love.keyboard.isDown("d") then
         rondje1.x = math.ceil(rondje1.x + 220 * dt)
@@ -82,7 +78,7 @@ function love.update(dt)
     end
 
     rondje2.angle = math.atan2(heightline, lengthline)
-    muisangle = -math.atan2(yMl - rondje1.y, xMl - rondje1.x)
+    muisangle = math.atan2(yM - rondje1.y, xM - rondje1.x)
 end
 
 function love.draw()
@@ -111,7 +107,4 @@ function love.draw()
     love.graphics.print("Angle rondje2: "..math.deg(rondje2.angle),0,28+28+14)
     love.graphics.print("Angle Muis: "..math.deg(muisangle),0,28+28+28)
 
-    if love.mouse.isDown("1") then
-        love.graphics.line(rondje1.x, rondje1.y, xMl, yMl)
-    end
 end
